@@ -16,12 +16,13 @@ if (threeFigureNumber >= 100 && threeFigureNumber < 1000)
 }
 else
 {
-Console.Write("Ваше число не трехзначное");
+    Console.Write("Ваше число не трехзначное");
 }
 */
 
 //Задача 13: Напишите программу, которая выводит третью цифру заданного числа или сообщает, что третьей цифры нет.
 
+/*
 int ThirdFigure (int number)
 {
     int i = 10;
@@ -48,3 +49,28 @@ else
 {
     Console.Write($"У числа {number} нет третьей цифры");
 }
+*/
+
+//Задача 15: Напишите программу, которая принимает на вход цифру, обозначающую день недели, и проверяет, является ли этот день выходным.
+
+bool DayOfTheWeek (int figure)
+{
+    bool dayOff = false;
+    if (figure > 5)
+    {
+        if (figure < 8)
+        {
+            dayOff = true;
+        }
+        else
+        {
+            Console.WriteLine("Вы некорректно ввели день недели");
+        }
+    }
+    
+    return dayOff;
+}
+
+Console.Write("Введите цифру дня недели ");
+int DayNumber = Convert.ToInt32(Console.ReadLine());
+Console.Write(DayOfTheWeek(DayNumber));

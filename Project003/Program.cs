@@ -38,6 +38,7 @@ Console.WriteLine(NumPalindrome(number));
 
 //Задача 21. Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.
 
+/*
 double Distance3d (double xa, double xb, double ya, double yb, double za, double zb)
 {
     double sqrX = (xb - xa) * (xb - xa);
@@ -62,3 +63,23 @@ double z2 = Convert.ToDouble(Console.ReadLine());
 
 double result = Distance3d(x1,x2,y1,y2,z1,z2);
 Console.WriteLine($"Расстояние между двумя пространственными точками: {result}");
+*/
+
+//Задача 23. Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
+
+void CubeTable(int number)
+{
+    int i = 1;
+    int cube = 0;
+    while (i <= number)
+    {
+        cube = i * i * i;
+        Console.Write(cube + " ");
+        i++; 
+    }
+}
+
+Console.Write("Введите число: ");
+int num = Convert.ToInt32(Console.ReadLine());
+
+CubeTable(num);

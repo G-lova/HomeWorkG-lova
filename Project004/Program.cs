@@ -40,6 +40,7 @@ Console.WriteLine($"Количество четных чисел в массив
 
 //Задача 36: Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных позициях.
 
+/*
 int OddPositionsSum(int[] array)
 {
     int sum = 0;
@@ -50,12 +51,72 @@ int OddPositionsSum(int[] array)
 
 Console.Write("Введите количество элементов массива: ");
 int n = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите значение минимаьного элемента массива: ");
+Console.Write("Введите значение минимального элемента массива: ");
 int min = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите значение максимального элемента массива: ");
 int max = Convert.ToInt32(Console.ReadLine());
 int[] myArray = CreateRandomArray(n, min, max);
 ShowArray(myArray);
 Console.WriteLine($"Сумма элементов, стоящих на нечетных позициях, равна: {OddPositionsSum(myArray)}");
+*/
 
-//Задача 38: Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
+//Задача 38: Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементом массива.
+
+double[] CreateDoubleArray(int size)
+{
+    double[] array = new double[size];
+    for (int i = 0; i < size; i++)
+    {
+        array[i] = new Random().NextDouble();
+    }
+
+    return array;
+}
+
+void ShowDoubleArray(double[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+        Console.Write(Math.Round(array[i], 2) + " ");
+
+    Console.WriteLine();
+}
+
+Console.Write("Введите количество элементов массива: ");
+int n = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите значение минимального элемента массива: ");
+int min = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите значение максимального элемента массива: ");
+int max = Convert.ToInt32(Console.ReadLine());
+int[] intArray = CreateRandomArray(n, min, max);
+double[] doubleArray = CreateDoubleArray(n);
+
+double[] myArray = new double[n];
+for (int i = 0; i < n; i++)
+{
+    myArray[i] = Convert.ToDouble(intArray[i]) + doubleArray[i];
+}
+ShowDoubleArray(myArray);
+
+double MinElementOfArray(double[] array)
+{
+    double min = myArray[0];
+    for (int i = 0; i < n; i++)
+    {
+        if (myArray[i] < min)
+            min = myArray[i];
+    }
+    return min;
+}
+
+double MaxElementOfArray(double[] array)
+{
+    double max = myArray[0];
+    for (int i = 0; i < n; i++)
+    {
+        if (myArray[i] > max)
+            max = myArray[i];
+    }
+    return max;
+}
+
+Console.WriteLine($"Разница между максимальным и минимальным элементом массива равна: {Math.Round(MaxElementOfArray(myArray) - MinElementOfArray(myArray), 2)}");

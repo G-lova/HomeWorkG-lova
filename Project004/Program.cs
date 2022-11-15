@@ -9,6 +9,7 @@
     return array;
 }
 
+/*
 void ShowArray(int[] array)
 {
     for (int i = 0; i < array.Length; i++)
@@ -16,6 +17,7 @@ void ShowArray(int[] array)
 
     Console.WriteLine();
 }
+*/
 
 //Задача 34: Задайте массив заполненный случайными положительными трёхзначными числами. Напишите программу, которая покажет количество чётных чисел в массиве.
 

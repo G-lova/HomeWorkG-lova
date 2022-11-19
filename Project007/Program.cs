@@ -70,7 +70,7 @@ int ArrayElementValue(int[,] array2d, int rowPosition, int columnPosition)
     rowPosition = Convert.ToInt32(Console.ReadLine());
     Console.Write("Введите номер столбца: ");
     columnPosition = Convert.ToInt32(Console.ReadLine());
-    while (rowPosition > array2d.GetLength(0) || columnPosition > array2d.GetLength(1))
+    while (rowPosition >= array2d.GetLength(0) || columnPosition >= array2d.GetLength(1))
     {
         Console.WriteLine("Такого элемента не существует");
         Console.WriteLine();
@@ -80,7 +80,7 @@ int ArrayElementValue(int[,] array2d, int rowPosition, int columnPosition)
         columnPosition = Convert.ToInt32(Console.ReadLine());
     }
        
-    return array2d[rowPosition - 1, columnPosition - 1];
+    return array2d[rowPosition, columnPosition];
 }
 
 Console.Write("Введите количество строк: ");

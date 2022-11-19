@@ -7,7 +7,7 @@
     return array;
 }
 
-/*
+
 void Show2dArray(int[,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
@@ -19,23 +19,9 @@ void Show2dArray(int[,] array)
     Console.WriteLine();
 }
 
-
-Console.Write("Введите количество строк: ");
-int m = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите количество столбцов: ");
-int n = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите значение минимального элемента: ");
-int min = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите значение максимального элемента: ");
-int max = Convert.ToInt32(Console.ReadLine());
-
-int[,] myArray = CreateRandom2dArray(m, n, min, max);
-Show2dArray(myArray);
-*/
-
 //Задача 47. Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
 
-
+/*
 double[,] CreateDouble2dArray(int rows, int columns)
 {
     double[,] array = new double[rows, columns];
@@ -74,11 +60,50 @@ for (int i = 0; i < m; i++)
         myArray[i, j] = Convert.ToDouble(int2dArray[i, j]) + double2dArray[i, j];
 
 ShowDouble2dArray(myArray);
-
-
+*/
 
 //Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает значение этого элемента или же указание, что такого элемента нет.
 
 
 
 //Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+
+
+Console.Write("Введите количество строк: ");
+int m = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите количество столбцов: ");
+int n = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите значение минимального элемента: ");
+int min = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите значение максимального элемента: ");
+int max = Convert.ToInt32(Console.ReadLine());
+
+int[,] myArray = CreateRandom2dArray(m, n, min, max);
+Show2dArray(myArray);
+
+double[] ColumnsArithmeticMean(int[,] array)
+{
+    double[] arithmeticMeanArray = new double[array.GetLength(1)];
+    int i = 0;
+    for (int j = 0; j < array.GetLength(1); j++)
+    {
+        double sum = 0;
+        for (i = 0; i < array.GetLength(0); i++)
+        {
+            sum += array[i, j];
+        }
+        arithmeticMeanArray[j] = sum / i;
+    }
+    return arithmeticMeanArray;
+}
+
+void ShowDoubleArray(double[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+        Console.Write(Math.Round(array[i], 2) + " ");
+
+    Console.WriteLine();
+}
+
+Console.WriteLine("Средние арифметическое элементов по столбцам:");
+ShowDoubleArray(ColumnsArithmeticMean(myArray));

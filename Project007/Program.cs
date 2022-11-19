@@ -64,11 +64,43 @@ ShowDouble2dArray(myArray);
 
 //Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает значение этого элемента или же указание, что такого элемента нет.
 
+int ArrayElementValue(int[,] array2d, int rowPosition, int columnPosition)
+{
+    Console.Write("Введите номер строки: ");
+    rowPosition = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Введите номер столбца: ");
+    columnPosition = Convert.ToInt32(Console.ReadLine());
+    while (rowPosition > array2d.GetLength(0) || columnPosition > array2d.GetLength(1))
+    {
+        Console.WriteLine("Такого элемента не существует");
+        Console.WriteLine();
+        Console.Write("Введите номер строки: ");
+        rowPosition = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Введите номер столбца: ");
+        columnPosition = Convert.ToInt32(Console.ReadLine());
+    }
+       
+    return array2d[rowPosition - 1, columnPosition - 1];
+}
+
+Console.Write("Введите количество строк: ");
+int m = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите количество столбцов: ");
+int n = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите значение минимального элемента: ");
+int min = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите значение максимального элемента: ");
+int max = Convert.ToInt32(Console.ReadLine());
+
+int[,] myArray = CreateRandom2dArray(m, n, min, max);
+Show2dArray(myArray);
+
+Console.WriteLine("Значение элемента: " + ArrayElementValue(myArray, m, n));
 
 
 //Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
 
-
+/*
 Console.Write("Введите количество строк: ");
 int m = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите количество столбцов: ");
@@ -107,3 +139,4 @@ void ShowDoubleArray(double[] array)
 
 Console.WriteLine("Средние арифметическое элементов по столбцам:");
 ShowDoubleArray(ColumnsArithmeticMean(myArray));
+*/

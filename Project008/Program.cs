@@ -33,6 +33,7 @@ Show2dArray(myArray);
 
 // Задача 54: Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
 
+/*
 void SortByDecending(int[,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
@@ -53,20 +54,29 @@ void SortByDecending(int[,] array)
 
 SortByDecending(myArray);
 Show2dArray(myArray);
+*/
 
 // Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
 
-// Например, задан массив:
+int MinElementPosition(int[] array)
+{
+    int iMin = 0;
+    for (int i = 0; i < array.Length; i++)
+        if (array[i] < array[iMin])
+            iMin = i;
+    return iMin;
+}
 
-// 1 4 7 2
+int MinSumRow(int[,] array)
+{
+    int[] sumArray = new int[array.GetLength(0)];
+    for (int i = 0; i < array.GetLength(0); i++)
+        for (int j = 0; j < array.GetLength(1); j++)
+            sumArray[i] += array[i, j];
+    return MinElementPosition(sumArray);
+}
 
-// 5 9 2 3
-
-// 8 4 2 4
-
-// 5 2 6 7
-
-// Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
+Console.WriteLine($"Строка с наименьшей суммой элементов: {MinSumRow(myArray) + 1}");
 
 // Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
 // Например, даны 2 матрицы:

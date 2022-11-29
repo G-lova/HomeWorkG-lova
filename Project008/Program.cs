@@ -1,4 +1,5 @@
-﻿int[,] CreateRandom2dArray(int rows, int columns, int minValue, int maxValue)
+﻿/*
+int[,] CreateRandom2dArray(int rows, int columns, int minValue, int maxValue)
 {
     int[,] array = new int[rows, columns];
     for (int i = 0; i < rows; i++)
@@ -30,6 +31,7 @@ int max = Convert.ToInt32(Console.ReadLine());
 
 int[,] myArray = CreateRandom2dArray(m, n, min, max);
 Show2dArray(myArray);
+*/
 
 // Задача 54: Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
 
@@ -81,13 +83,8 @@ Console.WriteLine($"Строка с наименьшей суммой элеме
 */
 
 // Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
-// Например, даны 2 матрицы:
-// 2 4 | 3 4
-// 3 2 | 3 3
-// Результирующая матрица будет:
-// 18 20
-// 15 18
 
+/*
 int[,] MatrixProductArray(int[,] array1, int[,] array2)
 {
     int[,] resultArray = new int[array1.GetLength(0), array2.GetLength(1)];
@@ -120,13 +117,65 @@ Show2dArray(myArray2);
 
 Console.WriteLine("Произведение двух матриц равно:");
 Show2dArray(MatrixProductArray(myArray, myArray2));
+*/
 
-// Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
+// Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел.
+// Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
 // Массив размером 2 x 2 x 2
 // 66(0,0,0) 25(0,1,0)
 // 34(1,0,0) 41(1,1,0)
 // 27(0,0,1) 90(0,1,1)
 // 26(1,0,1) 55(1,1,1)
+
+
+bool ContainNumber(int[,,] array, int number)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+        for (int j = 0; j < array.GetLength(1); j++)
+            for (int k = 0; k < array.GetLength(2); k++)
+                if (array[i, j, k] == number)
+                    return true;
+    return false;
+}
+
+int[,,] CreateRandom3dArray(int rows, int columns, int depth)
+{
+    int[,,] array = new int[rows, columns, depth];
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < columns; j++)
+            for (int k = 0; k < depth; k++)
+            {
+                int temp = new Random().Next(10, 100);
+                if (ContainNumber(array, temp) == false)
+                    array[i, j, k] = temp;
+                else
+                    k--;
+            }
+    return array;
+}
+
+void Show3dArray(int[,,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            for (int k = 0; k < array.GetLength(2); k++)
+                Console.Write($"{array[i, j, k]} ({i},{j},{k}) ");
+            Console.WriteLine();
+        }
+    Console.WriteLine();
+}
+
+Console.Write("Введите длину матрицы: ");
+int l = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите ширину матрицы: ");
+int m = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите глубину матрицы: ");
+int n = Convert.ToInt32(Console.ReadLine());
+
+int[,,] myArray = CreateRandom3dArray(l, m, n);
+Show3dArray(myArray);
+
 
 // Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
 // Например, на выходе получается вот такой массив:
@@ -134,3 +183,5 @@ Show2dArray(MatrixProductArray(myArray, myArray2));
 // 12 13 14 05
 // 11 16 15 06
 // 10 09 08 07
+
+

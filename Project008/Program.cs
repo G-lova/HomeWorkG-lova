@@ -58,6 +58,7 @@ Show2dArray(myArray);
 
 // Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
 
+/*
 int MinElementPosition(int[] array)
 {
     int iMin = 0;
@@ -77,6 +78,7 @@ int MinSumRow(int[,] array)
 }
 
 Console.WriteLine($"Строка с наименьшей суммой элементов: {MinSumRow(myArray) + 1}");
+*/
 
 // Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
 // Например, даны 2 матрицы:
@@ -85,6 +87,39 @@ Console.WriteLine($"Строка с наименьшей суммой элеме
 // Результирующая матрица будет:
 // 18 20
 // 15 18
+
+int[,] MatrixProductArray(int[,] array1, int[,] array2)
+{
+    int[,] resultArray = new int[array1.GetLength(0), array2.GetLength(1)];
+    int i = 0;
+    int j = 0;
+    int i1 = 0;
+    int i2 = 0;
+    int j1 = 0;
+    int j2 = 0;
+    for (i = 0, i1 = 0; i < resultArray.GetLength(0); i++, i1++)
+        for (j = 0, j2 = 0; j < resultArray.GetLength(1); j++, j2++)
+        {
+            resultArray[i, j] = 0;
+            for (j1 = 0, i2 = 0; j1 < array1.GetLength(1); j1++, i2++)
+                resultArray[i, j] += (array1[i1, j1] * array2[i2, j2]);
+
+        }
+    return resultArray;
+}
+
+Console.Write("Введите количество столбцов второй матрицы: ");
+int n2 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите значение минимального элемента второй матрицы: ");
+int min2 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите значение максимального элемента второй матрицы: ");
+int max2 = Convert.ToInt32(Console.ReadLine());
+
+int[,] myArray2 = CreateRandom2dArray(n, n2, min2, max2);
+Show2dArray(myArray2);
+
+Console.WriteLine("Произведение двух матриц равно:");
+Show2dArray(MatrixProductArray(myArray, myArray2));
 
 // Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
 // Массив размером 2 x 2 x 2

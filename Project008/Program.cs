@@ -127,7 +127,7 @@ Show2dArray(MatrixProductArray(myArray, myArray2));
 // 27(0,0,1) 90(0,1,1)
 // 26(1,0,1) 55(1,1,1)
 
-
+/*
 bool ContainNumber(int[,,] array, int number)
 {
     for (int i = 0; i < array.GetLength(0); i++)
@@ -175,7 +175,7 @@ int n = Convert.ToInt32(Console.ReadLine());
 
 int[,,] myArray = CreateRandom3dArray(l, m, n);
 Show3dArray(myArray);
-
+*/
 
 // Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
 // Например, на выходе получается вот такой массив:
@@ -184,4 +184,58 @@ Show3dArray(myArray);
 // 11 16 15 06
 // 10 09 08 07
 
+int[,] CreateSpiral2dArray(int size)
+{
+    int[,] array = new int[size, size];
+    int i = 0;
+    int j = 0;
+    int value = 1;
+    int count = 0;
+    while (value <= size * size)
+    {
+        for (j = count; j < size - count; j++)
+        {
+            array[i, j] = value;
+            value++;
+        }
+        j--;
+        for (i = count + 1; i < size - count; i++)
+        {
+            array[i, j] = value;
+            value++;
+        }
+        i--;
+        for (j = size - (count + 2); j > (count - 1); j--)
+        {
+            array[i, j] = value;
+            value++;
+        }
+        j++;
+        count++;
+        for (i = size - (count + 1); i > (count - 1); i--)
+        {
+            array[i, j] = value;
+            value++;
+        }
+        i++;
+    }
+    return array;
+}
+
+void Show2dArray(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+            Console.Write(array[i, j] + " ");
+        Console.WriteLine();
+    }
+    Console.WriteLine();
+}
+
+Console.Write("Введите количество строк/столбцов квадратной матрицы: ");
+int n = Convert.ToInt32(Console.ReadLine());
+
+int[,] myArray = CreateSpiral2dArray(n);
+Show2dArray(myArray);
 

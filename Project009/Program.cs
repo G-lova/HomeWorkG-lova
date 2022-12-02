@@ -22,6 +22,7 @@ ShowNums(n);
 // M = 1; N = 15 -> 120
 // M = 4; N = 8. -> 30
 
+/*
 int SumOfDiapasonNumbers(int m, int n)
 {
     if (m < n) return SumOfDiapasonNumbers(m, n - 1) + n;
@@ -35,8 +36,28 @@ int m = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите число: ");
 int n = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine($"Сумма элементов в промежутке от {m} до {n} равна {SumOfDiapasonNumbers(m, n)}");
+*/
 
 // Задача 68: Напишите программу вычисления функции Аккермана с помощью рекурсии.
 // Даны два неотрицательных числа m и n.
 // m = 2, n = 3 -> A(m,n) = 9
 // m = 3, n = 2 -> A(m,n) = 29
+
+double AkkermanFunction(double m, double n)
+{
+    if (m > 0)
+    {
+        if (n > 0) return AkkermanFunction(m - 1, AkkermanFunction(m, n - 1));
+        else
+            if (n == 0) return AkkermanFunction(m - 1, 1);
+    }
+    else
+        if (m == 0) return n + 1;
+    return 0;
+}
+
+Console.Write("Введите число: ");
+double m = Convert.ToDouble(Console.ReadLine());
+Console.Write("Введите число: ");
+double n = Convert.ToDouble(Console.ReadLine());
+Console.WriteLine($"Функция Аккермана А({m},{n}) равна {AkkermanFunction(m, n)}");
